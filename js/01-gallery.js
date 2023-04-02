@@ -1,4 +1,5 @@
 import { galleryItems } from './gallery-items.js';
+// import SimpleLightbox from "simplelightbox";
 console.log(galleryItems);
 // Change code below this line
 
@@ -27,6 +28,16 @@ function createGalleryMarkup(items) {
 gallery.insertAdjacentHTML('beforeend', createGalleryMarkup(galleryItems));
 
 gallery.addEventListener('click', onGalleryContainerClick);
+
+const lightbox = new SimpleLightbox('.gallery a', { 
+  captions: true,
+  captionDelay: 250,
+  captionsData: 'alt',
+  closeBtnCaption: 'Close',
+  nextBtnCaption: 'Next',
+  prevBtnCaption: 'Previous',
+  loadingCaption: 'Loading...',
+});
 
 //check for image 
 function onGalleryContainerClick(event) {
@@ -57,6 +68,7 @@ function onGalleryContainerClick(event) {
     }
       
   });
+  // instance.onclose();
   instance.show();
 
     // Close modal window on Escape key press
@@ -66,7 +78,3 @@ function onGalleryContainerClick(event) {
   });
 }
   
-
-   //   const instance = basicLightbox.create(`
-  //   <img src="${imageSet}" alt="${isGalleryImage.alt}" width="1200" height="800">
-  //   `);
